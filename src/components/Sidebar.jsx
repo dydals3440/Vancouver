@@ -9,15 +9,16 @@ import CartButtons from './CartButtons';
 import { useUserContext } from '../context/user_context';
 
 const Sidebar = () => {
-  const data = useProductsContext();
-  console.log(data);
-  const isOpen = false;
+  // data에 {isSidebarOpen: false, openSidebar: ƒ, closeSidebar: ƒ}이 정보를 갖고 있음. 구조분해할당으로 가져올 수 있음
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
   return (
     <SidebarContainer>
-      <aside className={`${isOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
+      <aside
+        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}
+      >
         <div className='sidebar-header'>
           <img src={logo} className='logo' alt='Vancouver' />
-          <button className='close-btn' type='button'>
+          <button className='close-btn' type='button' onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
@@ -25,12 +26,16 @@ const Sidebar = () => {
           {links.map(({ id, text, url }) => {
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <Link to={url} onClick={closeSidebar}>
+                  {text}
+                </Link>
               </li>
             );
           })}
           <li>
-            <Link to='/checkout'>checkout</Link>
+            <Link to='/checkout' onClick={closeSidebar}>
+              checkout
+            </Link>
           </li>
         </ul>
         <CartButtons />
