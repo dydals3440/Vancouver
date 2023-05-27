@@ -92,6 +92,7 @@ const NavContainer = styled.nav`
         text-transform: capitalize;
         letter-spacing: var(--spacing);
         padding: 0.5rem;
+        // $는 현재 선택된 요소를 가리키는 참조
         &:hover {
           border-bottom: 2px solid var(--clr-primary-7);
         }
