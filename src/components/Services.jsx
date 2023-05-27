@@ -1,9 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
+// constants에 필요 정보 관리
 import { services } from '../utils/constants';
 
 const Services = () => {
-  return <h4>services </h4>;
+  return (
+    <Wrapper>
+      <div className='section-center'>
+        <article className='header'>
+          <h3>
+            custom furniture <br />
+            built only for you
+          </h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto eos
+            minus odit fuga, facilis, necessitatibus iure mollitia cumque
+            aliquid eaque est, exercitationem omnis? Enim ullam libero
+            repellendus hic? Quaerat temporibus nobis iusto accusamus, quod
+            sapiente? Harum at iusto dolorem quam, in eaque, ex debitis iste
+            pariatur distinctio assumenda, rem voluptate.
+          </p>
+        </article>
+        <div className='services-center'>
+          {services.map((service) => {
+            const { id, icon, title, text } = service;
+            return (
+              <article key={id} className='service'>
+                <span className='icon'>{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
