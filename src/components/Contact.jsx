@@ -2,7 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Contact = () => {
-  return <h4>contact section</h4>;
+  return (
+    <Wrapper>
+      <h3>뉴스레터를 읽고 20% 할인을 받아보세요!</h3>
+      <div className='content'>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima natus
+          nesciunt ea in ab magni eaque voluptates est nam et modi, quaerat
+          molestias libero illo
+        </p>
+        <form className='contact-form'>
+          <input
+            type='email'
+            className='form-input'
+            placeholder='이메일을 입력해주세요'
+          />
+          <button type='submit' className='submit-btn'>
+            구독하기
+          </button>
+        </form>
+      </div>
+    </Wrapper>
+  );
 };
 const Wrapper = styled.section`
   padding: 5rem 0;
