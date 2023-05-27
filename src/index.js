@@ -3,13 +3,6 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-
-import { ProductsProvider } from './context/products_context';
-import { FilterProvider } from './context/filter_context';
-import { CartProvider } from './context/cart_context';
-import { UserProvider } from './context/user_context';
-import { Auth0Provider } from '@auth0/auth0-react';
-
 import {
   Home,
   SingleProduct,
@@ -20,6 +13,7 @@ import {
   Products,
   PrivateRoute,
 } from './pages';
+import { ProductsProvider } from './context/products_context';
 
 const router = createBrowserRouter([
   {
@@ -57,4 +51,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<RouterProvider router={router} />);
+root.render(
+  <ProductsProvider>
+    <RouterProvider router={router} />
+  </ProductsProvider>
+);
