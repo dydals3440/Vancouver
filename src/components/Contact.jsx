@@ -11,11 +11,17 @@ const Contact = () => {
           nesciunt ea in ab magni eaque voluptates est nam et modi, quaerat
           molestias libero illo
         </p>
-        <form className='contact-form'>
+        {/* Formspree 사용 https://formspree.io/forms/xgebbrav/integration */}
+        <form
+          className='contact-form'
+          action='https://formspree.io/f/xgebbrav'
+          method='POST'
+        >
           <input
             type='email'
             className='form-input'
             placeholder='이메일을 입력해주세요'
+            name='_replyto'
           />
           <button type='submit' className='submit-btn'>
             구독하기
@@ -32,7 +38,7 @@ const Wrapper = styled.section`
   }
   p {
     line-height: 2;
-    max-width: 45em;
+    max-width: 40em;
     color: var(--clr-grey-5);
   }
   .contact-form {

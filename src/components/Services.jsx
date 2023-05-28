@@ -80,7 +80,7 @@ const Wrapper = styled.section`
     background: var(--clr-primary-10);
     color: var(--clr-primary-1);
     svg {
-      font-size: 2rem;
+      font-size: 3rem;
     }
   }
   @media (min-width: 992px) {
