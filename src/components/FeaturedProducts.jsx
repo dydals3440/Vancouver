@@ -26,6 +26,7 @@ const FeaturedProducts = () => {
         <div className='underline'></div>
       </div>
       <div className='section-center featured'>
+        {/* 사진을 6개가 아닌 3개만 받고 싶으면 slice로 자르면 됨 */}
         {featured.slice(0, 3).map((product) => {
           return <Product key={product.id} {...product} />;
         })}
