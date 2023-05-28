@@ -1,8 +1,29 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const ProductImages = () => {
-  return <h4>product images</h4>;
+// 값을 전달하지 않아, images는 undefined가 된다. 그래서 images=[]를 사용하여 빈 배열로 초기화 해주어야, 0번쨰 값에 참조할 수 있다. 참조 에러가 핸들링!
+// 또한 url도 못읽어주기 때문에, 초깃 값을 url도 배열안에서 초기화 해주어야 한다.
+const ProductImages = ({ images = [{ url: '' }] }) => {
+  // 첫번쨰 이미지가, 슬라이더의 메인 화면이 됨
+  const [main, setMain] = useState(images[0]);
+  return (
+    <Wrapper>
+      <img src={main.url} alt='mainImage' className='main' />
+      <div className='gallery'>
+        {images.map((image, index) => {
+          return (
+            <img
+              src={image.url}
+              alt={image.filename}
+              key={index}
+              onClick={() => setMain(images[index])}
+              className={`${image.url === main.url ? 'active' : null}`}
+            />
+          );
+        })}
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`

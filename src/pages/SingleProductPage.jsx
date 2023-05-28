@@ -61,7 +61,7 @@ const SingleProductPage = () => {
           back to products
         </Link>
         <div className='product-center'>
-          <ProductImages />
+          <ProductImages images={images} />
           <section className='content'>
             <h2>{name}</h2>
             <Stars />
@@ -82,6 +82,7 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
+            {/* 재고가 없으면 굳이 장바구니에 컴포넌트가 필요가 없음 */}
             {stock > 0 && <AddToCart />}
           </section>
         </div>
