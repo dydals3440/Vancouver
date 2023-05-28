@@ -14,7 +14,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
   // 단일 제품 로딩
   products_loading: false,
   products_error: false,
@@ -66,7 +66,9 @@ export const ProductsProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+    <ProductsContext.Provider
+      value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}
+    >
       {children}
     </ProductsContext.Provider>
   );
