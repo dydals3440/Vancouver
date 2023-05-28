@@ -42,8 +42,52 @@ const SingleProductPage = () => {
   if (error) {
     return <Error />;
   }
-
-  return <h4>single product page</h4>;
+  const {
+    name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images,
+  } = product;
+  return (
+    <Wrapper>
+      <PageHero title={name} product />
+      <div className='section section-center page'>
+        <Link to='/products' className='btn'>
+          back to products
+        </Link>
+        <div className='product-center'>
+          <ProductImages />
+          <section className='content'>
+            <h2>{name}</h2>
+            <Stars />
+            <h5 className='price'>{formatPrice(price)}</h5>
+            <p className='desc'>{description}</p>
+            <p className='info'>
+              <span>재고량 :</span>
+              {stock > 0
+                ? '재고 보유 중 (추후 개수 추가)'
+                : '현재 준비한 수량이 모두 소진되었습니다.'}
+            </p>
+            <p className='info'>
+              <span>재고 관리 코드 : </span>
+              {sku}
+            </p>
+            <p className='info'>
+              <span>브랜드 :</span>
+              {company}
+            </p>
+            <hr />
+            {stock > 0 && <AddToCart />}
+          </section>
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.main`
