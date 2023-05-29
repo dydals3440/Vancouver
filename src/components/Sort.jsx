@@ -8,6 +8,8 @@ const Sort = () => {
     grid_view,
     setGridView,
     setListView,
+    sort,
+    updateSort,
   } = useFilterContext();
   return (
     <Wrapper>
@@ -31,7 +33,13 @@ const Sort = () => {
       <hr />
       <form>
         <label htmlFor='sort'>제품 분류</label>
-        <select name='sort' id='sort' className='sort-input'>
+        <select
+          name='sort'
+          id='sort'
+          className='sort-input'
+          value={sort}
+          onChange={updateSort}
+        >
           <option value='price-lowest'>낮은가격순</option>
           <option value='price-highest'>높은가격순</option>
           <option value='name-a'>이름 오름차순</option>

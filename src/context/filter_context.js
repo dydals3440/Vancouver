@@ -19,6 +19,7 @@ const initialState = {
   all_products: [],
   // grid / list view어떤거 할지 고르는 것
   grid_view: true,
+  sort: 'price-lowest',
 };
 
 const FilterContext = createContext();
@@ -38,9 +39,18 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_LISTVIEW });
   };
 
+  const updateSort = (e) => {
+    // 증명
+    // const name = e.target.name;
+    const value = e.target.value;
+    dispatch({ type: UPDATE_SORT, payload: value });
+  };
+
   return (
     // 우리가 initialState에서 받아온 값들을 value로 받아오는 것
-    <FilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <FilterContext.Provider
+      value={{ ...state, setGridView, setListView, updateSort }}
+    >
       {children}
     </FilterContext.Provider>
   );
