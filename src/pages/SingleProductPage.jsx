@@ -83,7 +83,7 @@ const SingleProductPage = () => {
             </p>
             <hr />
             {/* 재고가 없으면 굳이 장바구니에 컴포넌트가 필요가 없음 */}
-            {stock > 0 && <AddToCart />}
+            {stock > 0 && <AddToCart product={product} />}
           </section>
         </div>
       </div>
