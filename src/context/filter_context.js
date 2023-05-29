@@ -19,7 +19,19 @@ const initialState = {
   all_products: [],
   // grid / list view어떤거 할지 고르는 것
   grid_view: true,
+  // 정렬 옵션 기준 첫번쨰 기본 값
   sort: 'price-lowest',
+  //
+  filters: {
+    text: '',
+    company: 'all',
+    category: 'all',
+    color: 'all',
+    min_price: 0,
+    max_price: 0,
+    price: 0,
+    shipping: false,
+  },
 };
 
 const FilterContext = createContext();

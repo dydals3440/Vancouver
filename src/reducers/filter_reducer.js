@@ -11,10 +11,19 @@ import {
 
 const filter_reducer = (state, action) => {
   if (action.type === LOAD_PRODUCTS) {
+    let maxPrice = action.payload.map((product) => product.price);
+    // Math.max는 배열을 통과 못하므로 스프레드 연산자 사용
+    maxPrice = Math.max(...maxPrice);
+    console.log(maxPrice);
     return {
       ...state,
       all_products: [...action.payload],
       filtered_products: [...action.payload],
+      filters: {
+        ...state.filters,
+        max_price: maxPrice,
+        price: maxPrice,
+      },
     };
   }
   if (action.type === SET_GRIDVIEW) {
