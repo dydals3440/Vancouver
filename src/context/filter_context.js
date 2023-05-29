@@ -72,6 +72,10 @@ export const FilterProvider = ({ children }) => {
     if (name === 'category') {
       value = e.target.textContent;
     }
+    // html의 data-set 속성으로 우리는 color hexcode 정의
+    if (name === 'color') {
+      value = e.target.dataset.color;
+    }
     console.log(value);
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
