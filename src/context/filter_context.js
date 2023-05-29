@@ -17,6 +17,8 @@ const initialState = {
   filtered_products: [],
   // 필터 초기화시 원래 제품의 배열을 보여주는 값 설정
   all_products: [],
+  // grid / list view어떤거 할지 고르는 것
+  grid_view: true,
 };
 
 const FilterContext = createContext();
@@ -28,6 +30,7 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
   return (
+    // 우리가 initialState에서 받아온 값들을 value로 받아오는 것
     <FilterContext.Provider value={{ ...state }}>
       {children}
     </FilterContext.Provider>
