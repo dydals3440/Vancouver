@@ -14,6 +14,7 @@ import {
   PrivateRoute,
 } from './pages';
 import { ProductsProvider } from './context/products_context';
+import { FilterProvider } from './context/filter_context';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <ProductsProvider>
-    <RouterProvider router={router} />
+    <FilterProvider>
+      <RouterProvider router={router} />
+    </FilterProvider>
   </ProductsProvider>
 );
+
+// Filter는, Products 정보를 필요하므로, 감싸짐당해야함.
