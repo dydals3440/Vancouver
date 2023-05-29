@@ -67,6 +67,12 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     let name = e.target.name;
     let value = e.target.value;
+    // Products페이지, Category클릭시에, 빈값을 value로 받아오는 것을 확인할 수 있음
+    // 버튼이 있을때는 버튼안의 텍스트에 접근할 수 없음 textContent를 통해 접근, Filters.jsx에서 우리가 map형태로 Categories를 받아와서, 하나씩 버튼형태로 바꿔주었는데, 이떄 name에 접근할 수 없게 됨 (버튼형태이기 때문에)
+    if (name === 'category') {
+      value = e.target.textContent;
+    }
+    console.log(value);
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
