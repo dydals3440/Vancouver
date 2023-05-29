@@ -21,7 +21,7 @@ const initialState = {
   grid_view: true,
   // 정렬 옵션 기준 첫번쨰 기본 값
   sort: 'price-lowest',
-  //
+  // 전체 필터 default value 설정 이 조건에 해당하는 아이템을 출력
   filters: {
     text: '',
     company: 'all',
@@ -44,8 +44,10 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
+    // 1. 필터링 => 2. 정렬
+    dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [products, state.sort]);
+  }, [products, state.sort, state.filters]);
 
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW });
@@ -62,10 +64,25 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: value });
   };
 
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
+  const clearFilters = (e) => {};
+
   return (
     // 우리가 initialState에서 받아온 값들을 value로 받아오는 것
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, updateSort }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
     >
       {children}
     </FilterContext.Provider>
