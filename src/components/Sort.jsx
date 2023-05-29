@@ -3,7 +3,43 @@ import { useFilterContext } from '../context/filter_context';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
 import styled from 'styled-components';
 const Sort = () => {
-  return <h4>sort </h4>;
+  const {
+    filtered_products: products,
+    grid_view,
+    setGridView,
+    setListView,
+  } = useFilterContext();
+  return (
+    <Wrapper>
+      <div className='btn-container'>
+        <button
+          type='button'
+          className={`${grid_view ? 'active' : null}`}
+          onClick={setGridView}
+        >
+          <BsFillGridFill />
+        </button>
+        <button
+          type='button'
+          className={`${!grid_view ? 'active' : null}`}
+          onClick={setListView}
+        >
+          <BsList />
+        </button>
+      </div>
+      <p>{products.length}개의 제품을 찾았습니다.</p>
+      <hr />
+      <form>
+        <label htmlFor='sort'>제품 분류</label>
+        <select name='sort' id='sort' className='sort-input'>
+          <option value='price-lowest'>낮은가격순</option>
+          <option value='price-highest'>높은가격순</option>
+          <option value='name-a'>이름 오름차순</option>
+          <option value='name-z'>이름 내림차순</option>
+        </select>
+      </form>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`

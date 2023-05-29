@@ -21,6 +21,7 @@ const products_reducer = (state, action) => {
   }
   if (action.type === GET_PRODUCTS_SUCCESS) {
     const featured_products = action.payload.filter(
+      // product.featured === true인 요소들로 필터링하여, 새로운 배열 생성
       (product) => product.featured === true
     );
     return {
