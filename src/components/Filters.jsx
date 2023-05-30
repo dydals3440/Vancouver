@@ -45,7 +45,7 @@ const Filters = () => {
           {/* End Search Input */}
           {/* categories */}
           <div className='form-control'>
-            <h5>category</h5>
+            <h5>카테고리</h5>
             <div>
               {categories.map((c, index) => {
                 return (
@@ -67,7 +67,7 @@ const Filters = () => {
           {/* End of Categories */}
           {/* companies*/}
           <div className='form-control'>
-            <h5>company</h5>
+            <h5>회사명</h5>
             <select
               name='company'
               value={company}
@@ -88,7 +88,7 @@ const Filters = () => {
             colors
           */}
           <div className='form-control'>
-            <h5>colors</h5>
+            <h5>색상</h5>
             <div className='colors'>
               {colors.map((c, index) => {
                 // All인 경우가 없음! 생성해주기!
@@ -129,7 +129,7 @@ const Filters = () => {
           */}
           {/* price */}
           <div className='form-control'>
-            <h5>price</h5>
+            <h5>가격</h5>
             <p className='price'>{formatPrice(price)}</p>
             <input
               type='range'
@@ -141,7 +141,22 @@ const Filters = () => {
             />
           </div>
           {/* end of price */}
+          {/* shipping */}
+          <div className='form-control shipping'>
+            <label htmlFor='shipping'>무료 배송</label>
+            <input
+              type='checkbox'
+              name='shipping'
+              id='shipping'
+              onChange={updateFilters}
+              checked={shipping}
+            />
+          </div>
         </form>
+        {/* end of shipping */}
+        <button type='button' className='clear-btn' onClick={clearFilters}>
+          필터 초기화하기
+        </button>
       </div>
     </Wrapper>
   );

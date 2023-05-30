@@ -79,11 +79,15 @@ export const FilterProvider = ({ children }) => {
     if (name === 'price') {
       value = Number(value);
     }
-    console.log(value);
+    if (name === 'shipping') {
+      value = e.target.checked;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
-  const clearFilters = (e) => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
 
   return (
     // 우리가 initialState에서 받아온 값들을 value로 받아오는 것

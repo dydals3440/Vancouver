@@ -17,6 +17,7 @@ const filter_reducer = (state, action) => {
     console.log(maxPrice);
     return {
       ...state,
+      // 전체 제품을 설정하는 것은 필터링 과정시 매우 중요! 없으면 필터링 기능 X
       all_products: [...action.payload],
       filtered_products: [...action.payload],
       filters: {
@@ -64,9 +65,33 @@ const filter_reducer = (state, action) => {
     const { name, value } = action.payload;
     return { ...state, filters: { ...state.filters, [name]: value } };
   }
+  // 필터링 액션 설정!
   if (action.type === FILTER_PRODUCTS) {
-    console.log('filter product');
-    return { ...state };
+    const { all_products } = state;
+    const { text, category, company, color, price, shipping } = state.filters;
+    // 임시변수를 설정하여, 전체 제품을 복사해준다음에 여기서 직접적으로 필터링한 요소들을 관리해주어야함.
+    let tempProducts = [...all_products];
+    // filtering
+    if (text) {
+      tempProducts = tempProducts.filter((product) => {
+        return product.name.toLowerCase().startsWith(text);
+      });
+    }
+    return { ...state, filtered_products: tempProducts };
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        text: '',
+        company: 'all',
+        category: 'all',
+        color: 'all',
+        price: state.filters.max_price,
+        shipping: false,
+      },
+    };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);
