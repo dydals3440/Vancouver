@@ -7,7 +7,30 @@ import CartItem from './CartItem';
 import CartTotals from './CartTotals';
 
 const CartContent = () => {
-  return <h4>cart content </h4>;
+  const { cart, clearCart } = useCartContext();
+  console.log(cart, clearCart);
+  return (
+    <Wrapper className='section section-center'>
+      <CartColumns />
+      {cart.map((item) => {
+        return <CartItem key={item.id} {...item} />;
+      })}
+      <hr />
+      <div className='link-container'>
+        <Link to='/products' className='link-btn'>
+          계속해서 쇼핑하기
+        </Link>
+        <button
+          type='button'
+          className='link-btn clear-btn'
+          onClick={clearCart}
+        >
+          쇼핑카트 비우기
+        </button>
+      </div>
+      <CartTotals />
+    </Wrapper>
+  );
 };
 const Wrapper = styled.section`
   .link-container {
