@@ -6,7 +6,27 @@ import { formatPrice } from '../utils/helpers';
 import { Link } from 'react-router-dom';
 
 const CartTotals = () => {
-  return <h4>cart totals</h4>;
+  const { total_amount, shipping_fee } = useCartContext();
+  return (
+    <Wrapper>
+      <div>
+        <article>
+          <h5>
+            합계 : <span>{formatPrice(total_amount)}</span>
+          </h5>
+          <p>
+            배송비 : <span>{formatPrice(shipping_fee)}</span>
+          </p>
+          <h4>
+            총 금액 : <span>{formatPrice(total_amount + shipping_fee)}</span>
+          </h4>
+        </article>
+        <Link to='/checkout' className='btn'>
+          결제하로 가기
+        </Link>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
