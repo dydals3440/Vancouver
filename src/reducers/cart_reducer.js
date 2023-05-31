@@ -25,14 +25,13 @@ const cart_reducer = (state, action) => {
           return cartItem;
         }
       });
-
       return { ...state, cart: tempCart };
     } else {
       // 아이템이 카트에 없으면 아래의 속성을 갖은 카트를 만듬.
       const newItem = {
-        // 같은 아이템이여도 색상이 다를 수 있기 때문에
+        // 같은 아이템이여도 색상이 다를 수 있기 때문에(초기값 세팅)
         id: id + color,
-        name: product,
+        name: product.name,
         color,
         amount,
         image: product.images[0].url,
@@ -42,6 +41,14 @@ const cart_reducer = (state, action) => {
       return { ...state, cart: [...state.cart, newItem] };
     }
   }
+  if (action.type === REMOVE_CART_ITEM) {
+    const tempCart = state.cart.filter((item) => item.id !== action.payload);
+    return { ...state, cart: tempCart };
+  }
+  if (action.type === CLEAR_CART) {
+    return { ...state, cart: [] };
+  }
+
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 
