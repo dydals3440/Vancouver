@@ -15,6 +15,7 @@ import {
 } from './pages';
 import { ProductsProvider } from './context/products_context';
 import { FilterProvider } from './context/filter_context';
+import { CartProvider } from './context/cart_context';
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ProductsProvider>
     <FilterProvider>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </FilterProvider>
   </ProductsProvider>
 );
