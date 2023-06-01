@@ -50,7 +50,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/checkout',
-        element: <CheckOut />,
+        element: (
+          // 로그인이 되있어야 작동할 수 있음.
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
       },
     ],
   },
