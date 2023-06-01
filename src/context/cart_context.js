@@ -53,6 +53,7 @@ export const CartProvider = ({ children }) => {
 
   // 변화가 일어날떄마다, localStorage에 저장!
   useEffect(() => {
+    // 추가적으로, 장바구니의 상태에 변화가 생길떄마다(+, - 등) COUNT_CART_TOTALS라는, action을 reducer에서 실행
     dispatch({ type: COUNT_CART_TOTALS });
     // LS에 key, value값 전달
     localStorage.setItem('cart', JSON.stringify(state.cart));

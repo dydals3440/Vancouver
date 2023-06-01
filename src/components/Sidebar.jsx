@@ -11,6 +11,7 @@ import { useUserContext } from '../context/user_context';
 const Sidebar = () => {
   // data에 {isSidebarOpen: false, openSidebar: ƒ, closeSidebar: ƒ}이 정보를 갖고 있음. 구조분해할당으로 가져올 수 있음
   const { isSidebarOpen, closeSidebar } = useProductsContext();
+  const { myUser } = useUserContext();
   return (
     <SidebarContainer>
       <aside
@@ -32,11 +33,14 @@ const Sidebar = () => {
               </li>
             );
           })}
-          <li>
-            <Link to='/checkout' onClick={closeSidebar}>
-              checkout
-            </Link>
-          </li>
+          {myUser && (
+            <li>
+              {console.log(myUser)}
+              <Link to='/checkout' onClick={closeSidebar}>
+                Checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>

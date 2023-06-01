@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
+import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
 import {
   Home,
@@ -16,6 +17,10 @@ import {
 import { ProductsProvider } from './context/products_context';
 import { FilterProvider } from './context/filter_context';
 import { CartProvider } from './context/cart_context';
+import { UserProvider } from './context/user_context';
+
+// dev - i1bgctfyk7kvzau1.us.auth0.com;
+// 6tfmvBGSozZRV4yYUM530oiyfik5JUql
 
 const router = createBrowserRouter([
   {
@@ -54,13 +59,23 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <ProductsProvider>
-    <FilterProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </FilterProvider>
-  </ProductsProvider>
+  <Auth0Provider
+    domain='dev-i1bgctfyk7kvzau1.us.auth0.com'
+    clientId='6tfmvBGSozZRV4yYUM530oiyfik5JUql'
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
+    <UserProvider>
+      <ProductsProvider>
+        <FilterProvider>
+          <CartProvider>
+            <RouterProvider router={router} />
+          </CartProvider>
+        </FilterProvider>
+      </ProductsProvider>
+    </UserProvider>
+  </Auth0Provider>
 );
 
 // Filter는, Products 정보를 필요하므로, 감싸짐당해야함.

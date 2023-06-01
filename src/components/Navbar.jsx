@@ -10,6 +10,7 @@ import { useUserContext } from '../context/user_context';
 
 const Nav = () => {
   const { openSidebar } = useProductsContext();
+  const { myUser } = useUserContext();
   return (
     <NavContainer>
       <div className='nav-center'>
@@ -30,6 +31,12 @@ const Nav = () => {
               </li>
             );
           })}
+          {myUser && (
+            <li>
+              {console.log(myUser)}
+              <Link to='/checkout'>Checkout</Link>
+            </li>
+          )}
         </ul>
       </div>
       <CartButtons />
@@ -93,7 +100,7 @@ const NavContainer = styled.nav`
         text-transform: capitalize;
         letter-spacing: var(--spacing);
         padding: 0.5rem;
-        // $는 현재 선택된 요소를 가리키는 참조
+        // &는 현재 선택된 요소를 가리키는 참조
         &:hover {
           border-bottom: 2px solid var(--clr-primary-7);
         }

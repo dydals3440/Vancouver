@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext();
+  // User login여부, 또한, 사용자가 없다면 바로 로그인 옵션으로 리다이렉트 시킬것이기 때문에 loginWithRedirect 함수도 필요!
+  const { myUser, loginWithRedirect } = useUserContext();
   return (
     <Wrapper>
       <div>
@@ -21,9 +23,15 @@ const CartTotals = () => {
             총 금액 : <span>{formatPrice(total_amount + shipping_fee)}</span>
           </h4>
         </article>
-        <Link to='/checkout' className='btn'>
-          결제하로 가기
-        </Link>
+        {myUser ? (
+          <Link to='/checkout' className='btn'>
+            결제하로 가기
+          </Link>
+        ) : (
+          <button type='button' className='btn' onClick={loginWithRedirect}>
+            123
+          </button>
+        )}
       </div>
     </Wrapper>
   );

@@ -76,6 +76,7 @@ const cart_reducer = (state, action) => {
   }
 
   if (action.type === COUNT_CART_TOTALS) {
+    // context의 initial state에서 정보를 받아와서, 누적합해줌
     const { total_items, total_amount } = state.cart.reduce(
       (total, cartItem) => {
         const { amount, price } = cartItem;
