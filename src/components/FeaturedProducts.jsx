@@ -31,6 +31,9 @@ const FeaturedProducts = () => {
           return <Product key={product.id} {...product} />;
         })}
       </div>
+      <Link to='products' className='btn'>
+        전체 상품 보러가기
+      </Link>
     </Wrapper>
   );
 };

@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "netlify-cli": "^12.1.0"
+    "netlify-cli": "^12.1.0",
+    "yarn-audit-fix": "^9.3.10"
   }
 }

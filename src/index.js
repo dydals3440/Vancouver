@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/checkout',
         element: (
-          // 로그인이 되있어야 작동할 수 있음.
+          // 로그인이 되있어야 작동할 수 있음. requireAdmin={true} admin여부가 필요하면 이렇게 ...rest 를 통해 rest연산자로 접근할 수 있음
           <PrivateRoute>
             <CheckOut />
           </PrivateRoute>
