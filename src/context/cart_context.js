@@ -53,6 +53,7 @@ export const CartProvider = ({ children }) => {
 
   // 변화가 일어날떄마다, localStorage에 저장!
   useEffect(() => {
+    dispatch({ type: COUNT_CART_TOTALS });
     // LS에 key, value값 전달
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
