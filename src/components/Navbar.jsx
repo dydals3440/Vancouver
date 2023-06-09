@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo2.svg';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { links } from '../utils/constants';
@@ -34,12 +34,12 @@ const Nav = () => {
           {myUser && (
             <li>
               {console.log(myUser)}
-              <Link to='/checkout'>Checkout</Link>
+              <Link to='/checkout'>결제하기</Link>
             </li>
           )}
         </ul>
+        <CartButtons />
       </div>
-      <CartButtons />
     </NavContainer>
   );
 };

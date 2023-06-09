@@ -28,13 +28,19 @@ const CartButtons = () => {
           Login <FaUserPlus />
         </button>
       ) : (
-        <button
-          type='button'
-          className='auth-btn'
-          onClick={() => logout({ returnTo: window.location.origin })}
-        >
-          Logout <FaUserMinus />
-        </button>
+        <div className='user-info'>
+          <div className='user-container'>
+            <img className='user-img' src={myUser.picture} alt='User' />
+            <div className='user-name'>{myUser.name}</div>
+          </div>
+          <button
+            type='button'
+            className='auth-btn'
+            onClick={() => logout({ returnTo: window.location.origin })}
+          >
+            Logout <FaUserMinus />
+          </button>
+        </div>
       )}
     </Wrapper>
   );
@@ -44,7 +50,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  width: 225px;
+  width: 400px;
 
   .cart-btn {
     color: var(--clr-grey-1);
@@ -85,6 +91,7 @@ const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
+    margin-left: 30px;
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--clr-grey-1);
@@ -92,6 +99,33 @@ const Wrapper = styled.div`
     svg {
       margin-left: 5px;
     }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .user-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 30px;
+    align-items: center;
+  }
+  .user-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+  }
+
+  .user-name {
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    color: var(--clr-grey-1);
+    letter-spacing: var(--spacing);
   }
 `;
 export default CartButtons;

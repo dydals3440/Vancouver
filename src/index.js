@@ -19,9 +19,6 @@ import { FilterProvider } from './context/filter_context';
 import { CartProvider } from './context/cart_context';
 import { UserProvider } from './context/user_context';
 
-// dev - i1bgctfyk7kvzau1.us.auth0.com;
-// 6tfmvBGSozZRV4yYUM530oiyfik5JUql
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -65,8 +62,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <Auth0Provider
-    domain='dev-i1bgctfyk7kvzau1.us.auth0.com'
-    clientId='6tfmvBGSozZRV4yYUM530oiyfik5JUql'
+    domain={process.env.REACT_APP_AUTH_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
     authorizationParams={{
       redirect_uri: window.location.origin,
     }}
