@@ -16,7 +16,7 @@
 
 <!-- 추후 배포 링크 추가 예정입니다. -->
 
-[🛒 Vancouver 사용해보기](https://effulgent-youtiao-b6a85c.netlify.app/)
+[🛒 Vancouver 사용해보기](https://effulgent-youtiao-b6a85c.netlify.)
 
 ---
 
@@ -124,9 +124,9 @@
 
 ---
 
-### 🛒 Vancouverl기능 실행 영상!
+### 🛒 Vancouver 기능 실행 영상!
 
-![앱 사용영상](./src/images/playShoppingMall.gif)
+![앱 사용영상](./src/assets/Vancouver.gif)
 
 ---
 
@@ -134,7 +134,7 @@
 
 `🛒 ShoppingMall` 프로젝트를 진행하면서 발생한 `버그 수정`, `문제 해결`, 기능 구현시 `어려웠던 점 정리`, `성능 개선`, `작업 효율 향상` 들에 관해 정리한 기록입니다.
 
-[프로젝트를 진행시 배운점들 정리](https://www.notion.so/ShoppingMall-7f5937aef13c4c1abf9985edda88554a?pvs=4)
+[프로젝트를 진행시 배운점들 정리](주소)
 
 ---
 
@@ -150,5 +150,5 @@
 
 ### 버그 발생시 ☎️
 
-연락 부탁드립니다. 더욱 좋은 코드 리팩토링 방향성이 있어도 연락 주시면 감사하겠습니다!
+페이지 링크에 연결이 안될 시 연락 부탁드립니다. 더욱 좋은 코드 리팩토링 방향성이 있어도 연락 주시면 감사하겠습니다!
 <dydals3440@gmail.com>
